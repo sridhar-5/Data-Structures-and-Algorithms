@@ -18,9 +18,9 @@ public class binary_search {
         int right_boundary = length-1;
         int found = 0;
 
-        while(right_boundary >= 1){
+        while(right_boundary >= left_boundary){
 
-            middle_element = (left_boundary + (right_boundary-left_boundary))/2;
+            middle_element = left_boundary + (right_boundary-left_boundary)/2;
 
             if(search_array[middle_element] == element){
                 found = 1;

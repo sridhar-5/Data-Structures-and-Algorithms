@@ -34,5 +34,18 @@ public class Main {
         else{
             System.out.println("The element found at "+index + " by binary search");
         }
+
+        System.out.println("=====================searching section ends======================");
+
+        System.out.println();
+
+        //sorting section starts from here
+
+        System.out.println("=================Learning Sorting Algorithms starts=================");
+
+        int [] unsorted_array = {57,55,66,1,3};
+        selection_sort sort1 = new selection_sort(unsorted_array);
+        sort1.sort();
+        sort1.printArray();
     }
 }
