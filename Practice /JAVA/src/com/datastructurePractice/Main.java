@@ -43,9 +43,18 @@ public class Main {
 
         System.out.println("=================Learning Sorting Algorithms starts=================");
 
-        int [] unsorted_array = {57,55,66,1,3};
+        int [] unsorted_array = {6,2,9,4,1};
+
+        //selection sort object lies here
         selection_sort sort1 = new selection_sort(unsorted_array);
         sort1.sort();
         sort1.printArray();
+
+        //bubble sort object lies here
+         unsorted_array = new int[]{6, 2, 9, 4, 1};
+
+        bubble_sort sort2 = new bubble_sort(unsorted_array);
+        sort2.sort();
+        sort2.printArray();
     }
 }
