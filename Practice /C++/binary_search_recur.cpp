@@ -4,7 +4,7 @@ using namespace std;
 
 int binary_search(int a[],int l,int r,int element){
   if (r >= 1){
-    int middle_element = (l + (r-1))/2;
+    int middle_element = l + (r- l)/2;
 
     if(a[middle_element] < element){
       return binary_search(a,middle_element+1,r,element);

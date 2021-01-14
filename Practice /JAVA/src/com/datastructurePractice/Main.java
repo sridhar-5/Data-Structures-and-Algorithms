@@ -56,5 +56,12 @@ public class Main {
         bubble_sort sort2 = new bubble_sort(unsorted_array);
         sort2.sort();
         sort2.printArray();
+
+        //insertion sort object lies here
+        unsorted_array = new int[]{6, 2, 9, 4, 1};
+
+        insertion_sort sort3 = new insertion_sort(unsorted_array);
+        sort3.sort();
+        sort3.printArray();
     }
 }
