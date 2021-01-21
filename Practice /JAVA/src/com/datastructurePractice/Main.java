@@ -63,5 +63,11 @@ public class Main {
         insertion_sort sort3 = new insertion_sort(unsorted_array);
         sort3.sort();
         sort3.printArray();
+
+        //merge sort object here
+        unsorted_array = new int[]{6, 2, 9, 4, 1};
+        int n = unsorted_array.length;
+        Merge_sort sort4 = new Merge_sort();
+        sort4.merge_sort(unsorted_array,0,n-1);
     }
 }

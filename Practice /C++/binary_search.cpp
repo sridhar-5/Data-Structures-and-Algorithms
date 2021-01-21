@@ -6,9 +6,9 @@ int binary_search(int a[],int size,int ele){
 
   int middle_element;
   int l = 0;
-  int r = size - 2;
+  int r = size - 1;
   while(r >= 1){
-    middle_element = (l + r)/2;
+    middle_element = l + (r-l) / 2;
 
     if(a[middle_element] == ele){
       return middle_element;
