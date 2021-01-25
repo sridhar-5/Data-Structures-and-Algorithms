@@ -56,5 +56,6 @@ public class Main {
 
          **/
 
+        list.printlist();
     }
 }

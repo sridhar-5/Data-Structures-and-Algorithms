@@ -1,5 +1,7 @@
 package com.linkedlistspractice.datastructures;
 
+import java.util.Stack;
+
 @SuppressWarnings("ALL")
 public class LinkedList {
     public Node head = null;
@@ -131,7 +133,6 @@ public class LinkedList {
             //unlinking the temp pointer
             previous.next = temp.next;
         }
-
     }
 
     public int getLengthOfLinkedList(){    //iterative method of getting the size of the linked list
@@ -201,4 +202,92 @@ public class LinkedList {
         return searchRecursive(curnode.next,x);
     }
 
+    //printting the middle element
+    public void middle_element(){
+        /**
+         * here we make use of two pointers use the first pointer to iterate by step value 1 and
+         * the second pointer will iterate with the step value 2 an and in this way when the second pointer which reaches the end
+         * the slow pointer which is iterating by step 1 will reaching the middle element
+         */
+        Node pointer_one =head;
+        Node pointer_two = head;
+
+        if(head != null){
+            while(pointer_one != null && pointer_two.next != null){
+                pointer_one = pointer_one.next;
+                pointer_two = pointer_two.next.next;
+            }
+            System.out.println("The middle element is :" +pointer_one.data);
+        }
+    }
+    //find the number of occurences of an element in the node
+    public int no_of_occurences(int val){
+        int count = 0;
+        /**
+         * initialize the count to zero
+         * and then traverse through the linked list and increment the count
+         * once if you find the element and keep finding the element
+         */
+        Node search_pointer = head;
+        while(search_pointer != null){
+            if(search_pointer.data == val){
+                count = count + 1;
+            }
+            search_pointer = search_pointer.next;
+        }
+        return count;
+    }
+    public boolean is_palindrome(){
+        Node iterate = head;
+        /**
+         * strategy: to check this the smartest way is to use a stack of integers
+         * we basically push all the data in the nodes into the stack and then
+         * pop them out in order and check with the linked list again.
+         */
+        //initializing a stack of integer type here
+        Stack<Integer> s = new Stack<Integer>();
+
+        //first push all the elements into the stack
+        while(iterate != null){
+            s.push(iterate.data);
+            iterate = iterate.next;
+        }
+
+        /**
+         * now again start from the first and traverse through the linked list and check
+         * with the top element in the stack and then while traversing pop the element to
+         * check the next element and then continue to so till you reach the tail
+         */
+
+        boolean palin = true;
+
+        iterate = head;
+        while(iterate != null){
+            int i = s.pop();
+
+            if(iterate.data == i){
+                palin = true;
+            }
+            else{
+                palin = false;
+                break;
+            }
+            iterate = iterate.next;
+        }
+        return palin;
+    }
+
+    //remove duplicates from a sorted linked lists
+    public void remove_duplicates() {
+        Node current_node = head;
+
+        while (current_node != null) {
+            Node tempor = current_node;
+
+            while (tempor != null && tempor.data == current_node.data) {
+                tempor = tempor.next;
+            }
+            //still about to complete a bit lazy............xD
+        }
+    }
 }
