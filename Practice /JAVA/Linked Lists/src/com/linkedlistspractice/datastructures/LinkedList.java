@@ -281,13 +281,95 @@ public class LinkedList {
     public void remove_duplicates() {
         Node current_node = head;
 
-        while (current_node != null) {
+        /**
+         *
+         * suppose the linked list be 1 --> 2 --> 2 --> 3
+
+         llist.head        second              third           fourth
+         |                |                  |                 |
+         |                |                  |                 |
+         +----+------+     +----+------+     +----+------+     +----+-----+
+         | 1  |  o-------->| 2  |   o-------->|2 |   o----->   |3 | null
+         +----+------+     +----+------+     +----+------+     +----+-----+
+         |
+         |
+         current_node
+
+         **/
+
+        while(current_node != null){
+
             Node tempor = current_node;
 
-            while (tempor != null && tempor.data == current_node.data) {
+            while(tempor != null && tempor.data == current_node.data){
                 tempor = tempor.next;
             }
-            //still about to complete a bit lazy............xD
+
+            current_node.next = tempor;
+            current_node = current_node.next;
         }
+        /**
+         * the comment on how the inner loop runs is it checks if the current element is equal to the temp.data or not
+         * if it is equal it moves to the next element in the linked list untill it finds a different element
+         * and then in the next steo current_node.next pointer will be equal to the tempor pointer which skips all the duplicate elements.
+         */
+    }
+
+    //reaching the kth node from the end
+    public void PrintKthNodeFromTheEnd(int nth_node){
+
+        //solving this question with two pointer using hare and tortoise algorithm
+        /**
+         * like finding the middle element
+         * the logical way of solving this is that the slow and main pointer should start when the fast pointer
+         * reaches the nth node and from there it should increment by one (both the slow and fast pointers)
+         */
+        Node rabbit_pointer = head;
+        Node tortoise_pointer = head;
+        int count = 0;
+        while(rabbit_pointer != null && tortoise_pointer != null){
+
+            if(count < nth_node){
+                rabbit_pointer = rabbit_pointer.next;
+                count++;
+            }
+            else{
+                rabbit_pointer = rabbit_pointer.next;
+                tortoise_pointer = tortoise_pointer.next;
+            }
+        }
+        System.out.println("The "+nth_node+" node from the end has "+tortoise_pointer.data);
+    }
+    //sum of all the data in the nodes
+    public int sumOfTheNodes(Node next_node){
+
+        /**
+         * this is a recursive method
+         * logic : self explanatory
+         */
+        if(next_node == null){
+            return 0;
+        }
+        else{
+            return next_node.data + sumOfTheNodes(next_node.next);
+        }
+    }
+
+    //algorithm to swap two pairwise nodes in a linked list
+    public void swap(){
+
+        Node iterate_1 = head;
+
+        while(iterate_1 != null && iterate_1.next !=null){
+            int temp = iterate_1.data;
+            iterate_1.data = iterate_1.next.data;
+            iterate_1.next.data = temp;
+            iterate_1 = iterate_1.next.next;
+        }
+        /**
+         * Here we are not swapping the pointers but we are swapping the elements of the data
+         * first
+         */
+        printlist();
     }
 }

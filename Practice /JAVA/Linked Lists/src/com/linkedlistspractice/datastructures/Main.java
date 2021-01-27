@@ -57,5 +57,9 @@ public class Main {
          **/
 
         list.printlist();
+        list.PrintKthNodeFromTheEnd(3);
+        int sum = list.sumOfTheNodes(list.head);
+        System.out.println("The sum of the nodes " + sum);
+        list.swap();
     }
 }
