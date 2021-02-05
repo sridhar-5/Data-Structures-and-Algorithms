@@ -6,6 +6,7 @@ import java.util.Stack;
 public class LinkedList {
     public Node head = null;
     public Node tail = null;
+    public int size = 0;
 
 
     //all the methods for the linked lists goes here
@@ -38,6 +39,7 @@ public class LinkedList {
          * moving the head to point to the new node
          */
         head = new_node;
+        size = size + 1;
     }
     //inserting the node after the given element
     public void insertAfter(Node previous_node,int new_data){
@@ -58,6 +60,7 @@ public class LinkedList {
         //making the previous node point to the new_node
 
         previous_node.next = new_node;
+        size = size + 1;
     }
     //inserting the node at the end of the linked list
     public void insertLast(int new_data){
@@ -75,6 +78,7 @@ public class LinkedList {
          * here threre is an additional case because if the list is empty then this node should
          * be made to be pointed by the head as well
          */
+
         if (head == null){
             head = new_node;
             return;
@@ -90,6 +94,8 @@ public class LinkedList {
             last = last.next;
         }
         last.next = new_node;
+
+        size = size + 1;
     }
 
     //Algorithm for the delete node is present here
@@ -133,6 +139,7 @@ public class LinkedList {
             //unlinking the temp pointer
             previous.next = temp.next;
         }
+        size = size - 1;
     }
 
     public int getLengthOfLinkedList(){    //iterative method of getting the size of the linked list
