@@ -1,11 +1,11 @@
 #include <iostream>
 #include<string>
-
+#include <sstream>
 using namespace std;
 
-template <class T>
+template<class T>
 class DLList {
-protected:
+public:
 	class Node {
 	public:
 		T element;
@@ -13,16 +13,18 @@ protected:
 		Node *prev;
 		Node(T x) {
 		    //@start-editable@
+
 			element = x;
             next = NULL;
             prev = NULL;
+			
+			
 			//@end-editable@
 		}
 	};
 	Node *head;
 	Node *tail;
 	int n;
-
 public:
 	DLList() {
 		n = 0;
@@ -31,19 +33,26 @@ public:
 
 	bool isEmpty(){
 		//@start-editable@
-		return n==0;
+
+		return n==0;		
+
+		
 		//@end-editable@
 	}
 
 	int size() {
 	    //@start-editable@
+
 	    return n;
+	    
 	    //@end-editable@
 	}
 
 	bool insertLast(T x) {
 	    //@start-editable@
-        Node new_node = new Node(x);
+
+		
+	    Node *new_node = new Node(x);
         if(head == NULL){
             head = new_node;
             new_node->prev = NULL;
@@ -51,25 +60,25 @@ public:
             n++;
         }
         else{
-            Node iterate = head;
-            while(iterate->next != NULL){
-                iterate = iterate->next;
-            }
 
-            iterate->next = new_node;
-            new_node->prev = iterate;
-            new_node->next = NULL;
+			tail->next = new_node;
+			new_node->prev = tail;
 			tail = new_node;
-            n++;
-            
-        }
+			new_node->next = NULL;
+			n++;
+        }	
+		
+		
+		
 		//@end-editable@
 		return true;
 	}
 
 	T insertFirst(T x) {
 	    //@start-editable@
-		Node new_node = new Node(x);
+
+		
+		Node *new_node = new Node(x);
 
         if(head != NULL){
             new_node->next = head;
@@ -84,67 +93,99 @@ public:
             head = new_node;
 			tail = new_node;
             n++;
-        }
+        }    
+		
+		
+		
 		//@end-editable@
 		return x;
 	}
 
 	T deleteLast() {
 	    //@start-editable@
-		if(head == null){
-            cout << "Linked List Empty Exception";
+
+		
+		if(isEmpty()){
+            cout << "List Empty" << endl;
         }
-		else if(head->next == NULL){
+		else if(n == 1){
             head = NULL;
             tail = NULL;
-			n--;
+			n = 0;
         }
         else{
-            Node deleted = tail->prev->next;
-            tail->prev->next = NULL;
-			tail = deleted->prev;
+            Node *deleted = tail;
+			tail = tail->prev;
+			deleted->prev = NULL;
+			tail->next = NULL;
             free(deleted);
 			n--;
         }
+        int x = 0;
+ 		
+		
+		
 		//@end-editable@
 		return x;
+		
 		
 	}
 
 	T deleteFirst() {
 	    //@start-editable@
-		if(head == NULL){
-            cout << "Linked List Empty Exception";
+
+		
+		if(isEmpty()){
+            cout << "List Empty" <<endl;
         }
-        else if(head->next = NULL){
+        else if(n == 1){
             head = NULL;
             tail = NULL;
-			n--;
+			n = 0;
         }
 		else{
-            Node deleted = head;
+            Node *deleted = head;
             head = head->next;
+			head->prev = NULL;
             free(deleted);
 			n--;
-        }
+		}
+		int x = 0;
+		
+		
+		
+		
 		//@end-editable@
 		return x;
 	}
 
 	//insert a node with value u after the node containing value v
     T insertAfter(T u,T v){
-		Node inserted_this = new Node(u);
-		Node iterate = head;
-		while(iterate->next != NULL){
-			if(iterate->element == v){
-				break;
-			}
-			iterate = iterate->next;
+    	//@start-editable@
+
+		
+		Node *inserted_this = new Node(u);
+		Node *iterate = findNode(v);
+		
+		if(iterate == tail){
+			insertLast(u);
 		}
-		Node temporary = iterate->next;
-		temporary->prev = inserted_this;
-		iterate->next = inserted_this;
-		n++;
+		else if(iterate != NULL){
+			if(iterate->next != NULL){
+				iterate->next->prev = inserted_this;
+				inserted_this->next = iterate->next;
+			}
+			inserted_this->prev = iterate;
+			iterate->next = inserted_this;
+			n++;
+		}
+		else{
+			cout << "Node to insert after not found\n";
+		}
+		
+		return u;
+		
+		//@end-editable@
     	return true;
     }
     
@@ -152,94 +193,161 @@ public:
     //insert a node with value u before the node containing value v
 
     T insertBefore(T u,T v){
-		Node inserted_this = new Node(u);
-		Node iterate = head;
-		while(iterate->next != NULL){
-			if(iterate->element == v){
-				break;
-			}
-			iterate = iterate->next;
+    	//@start-editable@
+
+		
+		Node *inserted_this = new Node(u);
+		Node *iterate = findNode(v);
+		if(iterate == head){
+			insertFirst(u);
 		}
-		if(iterate->next == NULL){
-			return;
+		else if(iterate != NULL) {
+			inserted_this->next = iterate;
+			inserted_this->prev = iterate->prev;
+			iterate->prev->next = inserted_this;
+			iterate->prev = inserted_this;
+			n++;
+			
 		}
 		else{
-			iterate = iterate->prev;
-			iterate->next = inserted_this;
-			iterate = inserted_this;
-			n++;
+			cout << "Node to insert before not found\n";
 		}
+		
+	return u;
+		
+		//@end-editable@
+    	return true;
     }
 
     //delete the node after the node containting value u
     T deleteAfter(T u){
-		Node iterate = head;
-		while(iterate->next !=NULL){
-			if(iterate->element == u){
-				break;
-			}
-			iterate = iterate->next;
-		}
-		if(iterate->next == NULL){
-			return;
-		}
-		else{
-			Node deleted_node = iterate->next;
-			Node temp = iterate->next->next;
-			iterate->next = iterate->next->next;
-			temp->prev = iterate;
-			free(deleted_node);
-			n--;
-		}
+    	//@start-editable@
+
+		
+    if (isEmpty() or (n == 1 and tail->element != u))
+            cout << "Node to delete after not found\n";
+        else if (tail->element == u);
+        else if (tail->prev->element == u)
+            deleteLast();
+        else{
+          Node* temp = tail->prev->prev;
+            while (temp != NULL){
+              if (temp->element == u){
+                  
+                    temp->next = temp->next->next;
+                    temp->next->prev = temp;
+                    n --;
+                    return u;
+            } 
+        temp = temp->prev;
+    } 
+        cout << "Node to delete after not found\n";
+    }
+    return u;
+    
+		
+		
+		//@end-editable@
+
     }
     
 	//delete the node before the node containting value u
     T deleteBefore(T u){
-		Node iterate = head;
-		while(iterate->next != NULL){
-			if(iterate->element == u){
-				break;
+    	//@start-editable@
+
+		
+
+    if (isEmpty() or (n == 1 and head->element != u))
+            cout << "Node to delete before not found\n";
+        else if (head->element == u);
+        else if (head->next->element == u)
+            deleteFirst();
+        else{
+          Node* iterate = head->next->next;
+            while (iterate != NULL){
+              if (iterate->element == u){
+                iterate->prev = iterate->prev->prev;
+                    iterate->prev->next = iterate;
+                    n --;
+                    return u;
+        } 
+                iterate = iterate->next;
+      }
+           cout << "Node to delete before not found\n";
+    }
+    return u;
+ 		
+		
+		
+		
+		//@end-editable@
+
+    }
+
+    T getHead() {
+    	//@start-editable@
+
+		
+    	return head->element;
+		
+		
+		//@end-editable@
+
+    }
+
+    T getTail() {
+    	//@start-editable@
+
+		
+		
+     	return tail->element;
+		
+		
+		
+		//@end-editable@
+
+    }
+
+    Node* findNode(T val){
+    	//@start-editable@
+
+		
+		if (isEmpty()){
+			return NULL;
+		}
+
+		Node *iterate = head; 
+		while(iterate != NULL){
+			if(iterate->element == val){
+				return iterate;
 			}
 			iterate = iterate->next;
 		}
-		if(iterate->next == NULL){
-			return;
-		}
-		else{
-			Node deleted_node = iterate->prev;
-			Node temp = iterate->prev->prev;
-			iterate->prev = iterate->prev->prev;
-			temp->next = iterate;
-			free(deleted_node);
-			n--;
-		}
-    }
-
-    Node findNode(T val){
-		Node iterate = head;
-		while(iterate->next != NULL){
-			if(iterate->element == val){
-				int temp = iterate->element;
-			}
-		}
-		if(iterate->next == NULL){
-			int temp = 0;
-		}
+		return NULL;
+		
+		Node* temp = iterate;
+		
+		
+		
+		
+		//@end-editable@
     	return temp;
     }
 
     //swap the nodes containing u and v
     void swap(T u,T v){
-		Node iterate_1 = head;
-		while(iterate_1->next = NULL){
+    	//@start-editable@
+
+		Node *iterate_1 = head;
+		while(iterate_1 != NULL){
 			if(iterate_1->element == u){
 				break;
 			}
 			iterate_1 = iterate_1->next;
 		}
-		Node iterate_2 = head;
+		Node *iterate_2 = head;
 		while(iterate_2 != NULL){
-			if(iterate_2->element = v){
+			if(iterate_2->element == v){
 				break;
 			}
 			iterate_2 = iterate_2->next;
@@ -247,7 +355,14 @@ public:
 		int temp = iterate_1->element;
 		iterate_1->element = iterate_2->element;
 		iterate_2->element = temp;
-    	return true;
+		
+		
+		
+		
+		
+		//@end-editable@
+
+    	
     }
      
 	//Prints the list
@@ -259,7 +374,7 @@ public:
 				temp = temp->next;
 			}
 			cout << endl;
-			Node *temp = tail;
+			temp = tail;
 			while (temp != NULL) {
 				cout << temp->element << "->";
 				temp = temp->prev;
@@ -272,6 +387,19 @@ public:
 
 };
 
+int getValue(string s, int pos) {
+    istringstream iss(s);
+    string temp;
+    iss>>temp;
+    iss>>temp;
+    if(pos==1) {
+        return stoi(temp);
+    }
+    else {
+        iss>>temp;
+        return stoi(temp);
+    }
+}
 //Driver Code
 int main(){
 	DLList<int> dlist1;
@@ -281,64 +409,69 @@ int main(){
  	    getline(cin, str); 
  	    
  	    if (str.substr(0, 2) == "IF"){
- 	        int value = stoi(str.substr(3, 5));
+ 	        int value = getValue(str, 1);
  	        dlist1.insertFirst(value);
  	        dlist1.printlist();
  	    }
  	    else if (str.substr(0, 2) == "IL"){
- 	        int value = stoi(str.substr(3, 5));
+ 	        int value = getValue(str, 1);
  	        dlist1.insertLast(value);
  	        dlist1.printlist();
  	    }
  	    else if (str.substr(0, 2) == "DF"){
- 	        dlist1.removeFirst();
+ 	        dlist1.deleteFirst();
  	        dlist1.printlist();
  	    }
  	    else if (str.substr(0, 2) == "DL"){
- 	        dlist1.removeLast();
+ 	        dlist1.deleteLast();
  	        dlist1.printlist();
  	    }
- 	    if (str.substr(0, 2) == "IA"){
- 	        int value1 = stoi(str.substr(3, 5));
- 	        int value2 = stoi(str.substr(6, 8));
+ 	    else if (str.substr(0, 2) == "IA"){
+ 	        int value1 = getValue(str, 1);
+ 	        int value2 = getValue(str, 2);
  	        dlist1.insertAfter(value1,value2);
  	        dlist1.printlist();
  	    }
  	    else if (str.substr(0, 2) == "IB"){
- 	        int value1 = stoi(str.substr(3, 5));
- 	        int value2 = stoi(str.substr(6, 8));
+ 	        int value1 = getValue(str, 1);
+ 	        int value2 = getValue(str, 2);
  	        dlist1.insertBefore(value1,value2);
  	        dlist1.printlist();
  	    }
-		if (str.substr(0, 2) == "DA"){
- 	        int value = stoi(str.substr(3, 5));
+		else if (str.substr(0, 2) == "DA"){
+ 	        int value = getValue(str, 1);
  	        dlist1.deleteAfter(value);
  	        dlist1.printlist();
  	    }
  	    else if (str.substr(0, 2) == "DB"){
- 	        int value = stoi(str.substr(3, 5));
+ 	        int value = getValue(str, 1);
  	        dlist1.deleteBefore(value);
  	        dlist1.printlist();
  	    }
- 	    else if (str.substr(0, 1) == "S"){
- 	       cout<< dlist1.size()<<endl;
- 	    }
- 	    else if (str.substr(0, 1) == "F"){
- 	       cout<< dlist1->head->element<<endl;
- 	    }
  	    else if (str.substr(0, 1) == "L"){
- 	       cout<< dlist1->tail->element<<endl;
+ 	       cout<< dlist1.getTail()<<endl;
  	    }
  	    else if (str.substr(0, 4) == "FIND"){
- 	       int value1 = stoi(str.substr(5, 7));
- 	       Node *temp = dlist1.findNode(value1)
- 	       cout<<temp->element<<endl;
+ 	       int value1 = getValue(str, 1);
+ 	       DLList<int> :: Node *temp = dlist1.findNode(value1);
+ 	       if (temp!=NULL){
+ 	       	cout<<temp->element<<endl;
+ 	       }
+ 	       else{
+ 	       	cout<<"NULL"<<endl;
+ 	       }
+ 	    }
+ 	    else if (str.substr(0, 1) == "F"){
+ 	       cout<< dlist1.getHead()<<endl;
  	    }
  	    else if (str.substr(0, 2) == "SW"){
- 	       int value1 = stoi(str.substr(3, 5));
- 	       int value2 = stoi(str.substr(6, 8));
+ 	       int value1 = getValue(str, 1);
+ 	       int value2 = getValue(str, 2);
  	       dlist1.swap(value1,value2);
  	       dlist1.printlist();
+ 	    }
+ 	    else if (str.substr(0, 1) == "S"){
+ 	       cout<< dlist1.size()<<endl;
  	    }
  	    else if (str.substr(0,1) == "I"){
  	        //cout<<slist1.isEmpty()<<endl;

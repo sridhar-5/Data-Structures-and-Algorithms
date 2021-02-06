@@ -12,217 +12,196 @@ class DLList:
 
     def getHead(self):
         # @start-editable@
-        print(self.head.element)
+
+        return self.head
+
         # @end-editable@
-        return
 
     def getLastNode(self):
         # @start-editable@
-        print(self.tail.element)
+
+        return self.tail
+
         # @end-editable@
-        return
 
     def insertLast(self, u):
         # @start-editable@
+
         new_node = self.node(u)
 
         if self.size() == 0:
-            self.head = self.tail
-            self.head.element = u
+            self.head = new_node
+            self.tail = new_node
             self.sz += 1
         else:
-            temp = self.tail
             self.tail.next = new_node
+            new_node.prev = self.tail
             self.tail = new_node
-            new_node.prev = temp
-            new_node.next = None
             self.sz += 1
-        # @end-editable@
-        return
+
+            # @end-editable@
 
     def insertFirst(self, u):
         # @start-editable@
+
         new_node = self.node(u)
         if self.size() == 0:
-            self.head = self.tail
-            self.head.element = u
+            self.head = new_node
+            self.tail = new_node
             self.sz += 1
         else:
             new_node.next = self.head
             self.head.prev = new_node
             self.head = new_node
-            new_node.prev = None
             self.sz += 1
-        # @end-editable@
-        return
+
+            # @end-editable@
 
     # insert a node with value u after the node containing value v
     # error message: Node to insert after not found
     def insertAfter(self, u, v):
         # @start-editable@
 
-        newnode = self.node(u)
+        node_insert = self.node(u)
+        node_2 = self.findNode(v)
 
-        iterate = self.head
-        while iterate is not None:
-            if iterate.element == v:
-                break
-            iterate = iterate.next
-        if iterate is None:
-            print("Node to insert after not found")
-        elif iterate.next is self.tail:
-            newnode.next = None
-            newnode.prev = iterate
-            self.tail = newnode
+        if node_2 == self.tail:
+            self.insertLast(u)
+        elif node_2 is not None:
+            if node_2.next is not None:
+                node_insert.next = node_2.next
+                node_2.next.prev = node_insert
+            node_insert.prev = node_2
+            node_2.next = node_insert
             self.sz += 1
         else:
-            newnode.next = iterate.next
-            iterate.next.prev = newnode
-            newnode.prev = iterate
-            iterate.next = newnode
-            self.sz += 1
-        # @end-editable@
-        return
+            print("Node to insert after not found")
+
+            # @end-editable@
 
     # insert a node with value u before the node containing value v
     # error message: Node to insert before not found
     def insertBefore(self, u, v):
         # @start-editable@
+
         new_node = self.node(u)
-        iterate = self.head
+        node_2 = self.findNode(v)
 
-        while iterate.next is not None:
-            if iterate.element == v:
-                break
-            iterate = iterate.next
-
-        if iterate.next is None:
-            print("Node to insert before not found")
-        elif iterate.prev is self.head:
-            new_node.prev = None
-            new_node.next = iterate
-            self.head = new_node
+        if node_2 == self.head:
+            self.insertFirst(u)
+        elif node_2 is not None:
+            new_node.next = node_2
+            new_node.prev = node_2.prev
+            node_2.prev.next = new_node
+            node_2.prev = new_node
             self.sz += 1
         else:
-            iterate = iterate.prev
-            new_node.next = iterate.next
-            iterate.next.prev = new_node
-            new_node.prev = iterate
-            iterate.next = new_node
-            self.sz += 1
-        # @end-editable@
-        return
+            print("Node to insert before not found")
+
+            # @end-editable@
 
     def deleteFirst(self):
         # @start-editable@
+
         if self.size() == 0:
-            return
+            print("List Empty")
+        elif self.sz == 1:
+            self.head = self.tail = None
+            self.sz = 0
         else:
-            delete_this = self.head
-            temp = self.head.next
-            temp.prev = None
+            delete_node = self.head
             self.head = self.head.next
             self.head.prev = None
-            del delete_this
+            delete_node.next = None
             self.sz -= 1
-        # @end-editable@
-        return
+
+            # @end-editable@
 
     def deleteLast(self):
         # @start-editable@
+
         if self.size() == 0:
-            return
+            print("List Empty")
+        elif self.sz == 1:
+            self.head = self.tail = None
+            self.sz = 0
         else:
-            delete_this = self.tail
-            temp = self.tail.prev
-            temp.next = None
+            delete_node = self.tail
             self.tail = self.tail.prev
             self.tail.next = None
-            delete_this.prev = None
-            del delete_this
+            delete_node.prev = None
             self.sz -= 1
-        # @end-editable@
-        return
 
-        # delete the node after the node containting value u
+            # @end-editable@
 
+    # delete the node after the node containting value u
     # error message: Node to delete after not found
     def deleteAfter(self, u):
         # @start-editable@
-        iterate = self.head
 
-        while iterate.next is not None:
-            if iterate.element == u:
-                break
-            iterate = iterate.next
+        node_find = self.findNode(u)
 
-        if iterate.next is None:
+        if node_find is None:
             print("Node to delete after not found")
-        elif iterate.next is self.tail:
-            temp = iterate.next
-            iterate.next = None
-            self.tail = iterate
+        elif node_find.next is self.tail:
+            self.deleteLast()
+        elif node_find is self.tail:
+            return
+        elif node_find.next is not None and node_find is not None and node_find.next is not None:
+            node_find.next = node_find.next.next
+            if node_find.next != None:
+                node_find.next.prev = node_find
             self.sz -= 1
-        else:
-            del_node = iterate.next
-            iterate.next.next.prev = iterate
-            iterate.next = iterate.next.next
-            del del_node
-            self.sz -= 1
-        # @end-editable@
-        return
+
+            # @end-editable@
 
     # delete the node before the node containting value u
     # error message: Node to delete before not found
     def deleteBefore(self, u):
         # @start-editable@
-        iterate = self.head
 
-        while iterate is not None:
-            if iterate.element == u:
-                break
-            iterate = iterate.next
+        node_find = self.findNode(u)
 
-        if iterate is None:
+        if node_find is None:
             print("Node to delete before not found")
-        elif iterate.prev is self.head:
-            temp = iterate.prev
-            iterate.prev = None
-            self.head = iterate
-            del temp
+        elif node_find.prev is self.head:
+            self.deleteFirst()
+        elif node_find is self.head:
+            return
+        elif node_find is not None and node_find is not None and node_find.prev is not None:
+            node_find.prev = node_find.prev.prev
+            if node_find.prev != None:
+                node_find.prev.next = node_find
             self.sz -= 1
-        else:
-            temp = iterate.prev.prev
-            del_node = iterate.prev
-            iterate.prev = iterate.prev.prev
-            temp.next = iterate
-            del del_node
-            self.sz -= 1
-        # @end-editable@
-        return
+
+            # @end-editable@
 
     def findNode(self, val):
         # @start-editable@
-        iterate = self.head
 
-        while iterate.next is not None:
+        if self.size() == 0:
+            return None
+
+        iterate = self.head
+        while iterate is not None:
             if iterate.element == val:
-                return val
+                return iterate
             iterate = iterate.next
+        return None
 
         # @end-editable@
-        return
 
     # swap the nodes containing u and v
     def swap(self, u, v):
         # @start-editable@
+
         iterate_1 = self.head
-        while iterate_1.next is not None:
+        while iterate_1 is not None:
             if iterate_1.element == u:
                 break
             iterate_1 = iterate_1.next
         iterate_2 = self.head
-        while iterate_2.next is not None:
+        while iterate_2 is not None:
             if iterate_2.element == v:
                 break
             iterate_2 = iterate_2.next
@@ -230,8 +209,8 @@ class DLList:
         temp = iterate_1.element
         iterate_1.element = iterate_2.element
         iterate_2.element = temp
+
         # @end-editable@
-        return
 
     def isEmpty(self):
         # @start-editable@
