@@ -67,6 +67,7 @@ class DLList:
 
         if node_2 == self.tail:
             self.insertLast(u)
+            
         elif node_2 is not None:
             if node_2.next is not None:
                 node_insert.next = node_2.next
