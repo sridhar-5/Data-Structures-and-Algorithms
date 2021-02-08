@@ -150,7 +150,7 @@ class DLList:
             return
         elif node_find.next is not None and node_find is not None and node_find.next is not None:
             node_find.next = node_find.next.next
-            if node_find.next != None:
+            if node_find.next is not None:
                 node_find.next.prev = node_find
             self.sz -= 1
 
@@ -171,7 +171,7 @@ class DLList:
             return
         elif node_find is not None and node_find is not None and node_find.prev is not None:
             node_find.prev = node_find.prev.prev
-            if node_find.prev != None:
+            if node_find.prev is not None:
                 node_find.prev.next = node_find
             self.sz -= 1
 
