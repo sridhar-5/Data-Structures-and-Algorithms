@@ -2,7 +2,7 @@ def find_the_element(user, ele):
     right_boundary = len(user) - 1
     left_boundary = 0
     while(right_boundary >= left_boundary):
-        middle_element = (left_boundary+(right_boundary-left_boundary) // 2)
+        middle_element = (left_boundary+(right_boundary-1) // 2)
         if user[middle_element] == ele:
             return middle_element
         if user[middle_element] > ele:
