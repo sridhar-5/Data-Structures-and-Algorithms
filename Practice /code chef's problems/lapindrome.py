@@ -3,7 +3,7 @@ def main():
     x = 0
     while x < testcases:
 
-        input_string = input()
+        input_string = str(input())
         length = len(input_string)
 
         string_half = length // 2
@@ -12,11 +12,14 @@ def main():
             if sorted(input_string[:string_half]) == sorted(input_string[string_half:]):
                 print("YES")
             else:
-                print("NO")
+                print("No")
         else:
             if sorted(input_string[:string_half]) == sorted(input_string[string_half + 1:]):
                 print("YES")
             else:
+                print(length)
+                print(input_string[:string_half])
+                print(input_string[string_half+1:])
                 print("NO")
 
         x += 1
