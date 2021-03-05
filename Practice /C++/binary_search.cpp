@@ -7,7 +7,7 @@ int binary_search(int a[],int size,int ele){
   int middle_element;
   int l = 0;
   int r = size - 1;
-  while(r >= 1){
+  while(r >= l){
     middle_element = l + (r-l) / 2;
 
     if(a[middle_element] == ele){
