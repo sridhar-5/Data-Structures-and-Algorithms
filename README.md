@@ -81,8 +81,8 @@ The disadvantages of using a doubly linked list is they use more memory than a s
 
 - **Module: ** 
 
-	-**Python Implementation** [doublylinkedlists.py] (https://github.com/sridhar-5/Data-Structures-and-Algorithms/blob/main/Practice%20/Python/doublylinkedlists.py)
-	-**C++ Implementation** [Doublelinkedlist.cpp] (https://github.com/sridhar-5/Data-Structures-and-Algorithms/blob/main/Practice%20/C%2B%2B/Doublelinkedlist.cpp)
+	-**Python Implementation** [doublylinkedlists.py](https://github.com/sridhar-5/Data-Structures-and-Algorithms/blob/main/Practice%20/Python/doublylinkedlists.py)
+	-**C++ Implementation** [Doublelinkedlist.cpp](https://github.com/sridhar-5/Data-Structures-and-Algorithms/blob/main/Practice%20/C%2B%2B/Doublelinkedlist.cpp)
 
 - **Resources:**
 https://github.com/clair3st/Data-Structures
