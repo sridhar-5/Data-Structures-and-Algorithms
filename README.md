@@ -14,7 +14,7 @@ Advatange of a Linked list is a dynamic data structure which can grow while prog
 The disadvantages of using a linked list is they use more memory than an array. Nodes must be read in order from the head to the tail (sequential access). Hard to reverse traverse a single linked list.
 
 - **Implementation in Python :** [singly_linked_lists_actuall.py](Practice/Python/singly_linked_lists_actuall.py)
-- **Implementation in C++ :** [singly_linked_lists.cpp](/Practice/C++/singly_linked_lists.cpp)
+- **Implementation in C++ :** [singly_linked_lists.cpp](Practice/C++/singly_linked_lists.cpp)
 
 
 - **Resources:**
@@ -50,7 +50,7 @@ A stack is a collection of nodes with operations occuring at one end only. It be
 - **Modules: ** 
 	- **Python Implementation** [stack.py](Practice/Python/stack.py)
 	- **Python Implementation using linked lists** [stack_using_linked_lists.py](Practice/Python/stack_using_linked_lists.py)
-	- **C++ Implementation** [stacks.cpp] (Practice/C++/stacks.cpp) 
+	- **C++ Implementation** [stacks.cpp](Practice/C++/stacks.cpp) 
 
 - **Resources:**
 https://github.com/clair3st/Data-Structures
@@ -81,8 +81,8 @@ The disadvantages of using a doubly linked list is they use more memory than a s
 
 - **Module: ** 
 
-	-**Python Implementation** [doublylinkedlists.py] (Data-Structures-and-AlgorithmsData-Structures-and-AlgorithmsData-Structures-and-AlgorithmsData-Structures-and-Algorithms/Practice/Python/doublylinkedlists.py)
-	-**C++ Implementation** [Doublelinkedlist.cpp] (Data-Structures-and-Algorithms/Practice/C++/Doublelinkedlist.cpp)
+	-**Python Implementation** [doublylinkedlists.py](Practice/Python/doublylinkedlists.py)
+	-**C++ Implementation** [Doublelinkedlist.cpp](Practice/C++/Doublelinkedlist.cpp)
 
 - **Resources:**
 https://github.com/clair3st/Data-Structures
