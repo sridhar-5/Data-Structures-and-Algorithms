@@ -80,7 +80,7 @@ Advatange of a doubly linked list is two directional pointers allow traversal of
 The disadvantages of using a doubly linked list is they use more memory than a singly linked list and adding or removing a node requires changing more pointers.
 
 - **Module:** 
-	-**Python Implementation** [doubly_linked_lists.py] (/Practice/Python/doubly_linked_lists.py)
+	-**Python Implementation** [doubly_linked_lists.py] (Practice/Python/doubly_linked_lists.py)
 	-**C++ Implementation** [Double_linked_list.cpp] (Practice/C++/Double_linked_list.cpp)
 
 - **Resources:**
