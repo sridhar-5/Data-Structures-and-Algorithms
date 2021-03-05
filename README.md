@@ -1,6 +1,6 @@
 # Data-Structures and Algorithms
 
-Implementation of simple data structures in Python and c++ Mostly. (Java's work in progress)
+Implementation of simple data structures in Python and c++ Mostly. (Java's work is still in progress)
 _______
 
 ## Linked List
