@@ -49,7 +49,7 @@ A stack is a collection of nodes with operations occuring at one end only. It be
 
 - **Modules: ** 
 	- **Python Implementation** [stack.py](Practice/Python/stack.py)
-	- **Python Implementation using linked lists ** [stack_using_linked_lists.py](Practice/Python/stack_using_linked_lists.py)
+	- **Python Implementation using linked lists** [stack_using_linked_lists.py](Practice/Python/stack_using_linked_lists.py)
 	- **C++ Implementation** [stacks.cpp] (Practice/C++/stacks.cpp) 
 
 - **Resources:**
