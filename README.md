@@ -47,7 +47,7 @@ A stack is a collection of nodes with operations occuring at one end only. It be
 -Stacks are handy for remembering state eg undo and redo
 -Stacks can also be implemented using linked lists. 
 
-- **Modules: ** 
+- **Modules:** 
 	- **Python Implementation** [stack.py](https://github.com/sridhar-5/Data-Structures-and-Algorithms/blob/main/Practice%20/Python/stack.py)
 	- **Python Implementation using linked lists** [stack_using_linked_lists.py](https://github.com/sridhar-5/Data-Structures-and-Algorithms/blob/main/Practice%20/Python/stack_using_linked_lists.py)
 	- **C++ Implementation** [stacks.cpp](https://github.com/sridhar-5/Data-Structures-and-Algorithms/blob/main/Practice%20/C%2B%2B/stacks.cpp) 
