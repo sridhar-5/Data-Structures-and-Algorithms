@@ -379,4 +379,23 @@ public class LinkedList {
          */
         printlist();
     }
+    public boolean check_for_loop(){
+        /**
+         * Thid method is called as floyd's method to detect a loop in linked lists
+         * Approach:
+         * this algorithm contains teo pointers : slow pointer and a fast pointer
+         * slow pointer which will be iterating by one step and fast pointer will be iterating by two steps
+         * if they meet then this means there is a loop in the linked list
+         */
+        Node slow_pointer = head;
+        Node fast_pointer = head;
+        while(fast_pointer.next != null && fast_pointer != null && slow_pointer != null){
+            slow_pointer = slow_pointer.next;         // iterating by one step
+            fast_pointer = fast_pointer.next.next;    // iterating by teo steps
+            if (slow_pointer == fast_pointer) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

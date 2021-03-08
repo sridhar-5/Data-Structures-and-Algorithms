@@ -61,5 +61,20 @@ public class Main {
         int sum = list.sumOfTheNodes(list.head);
         System.out.println("The sum of the nodes " + sum);
         list.swap();
+
+        /**
+         * doubly linked list part
+         */
+
+        System.out.println("================Main DLL PART ==============");
+        //creating the DLL Object
+
+        DoublyLinkedList dll = new DoublyLinkedList();
+        dll.insertFirst(1);
+        dll.insertLast(2);
+        dll.insertLast(3);
+        dll.insertLast(4);
+        dll.printlist();
+        dll.findNode(2);
     }
 }
