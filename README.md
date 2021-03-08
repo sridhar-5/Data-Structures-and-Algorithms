@@ -15,6 +15,7 @@ The disadvantages of using a linked list is they use more memory than an array. 
 
 - **Implementation in Python :** [singly_linked_lists_actuall.py](https://github.com/sridhar-5/Data-Structures-and-Algorithms/blob/main/Practice%20/Python/singly_linked_lists_actuall.py)
 - **Implementation in C++ :** [singly_linked_lists.cpp](https://github.com/sridhar-5/Data-Structures-and-Algorithms/blob/main/Practice%20/C%2B%2B/singly_linked_lists.cpp)
+- **Implementation in Java :** [LinkedList.java](https://github.com/sridhar-5/Data-Structures-and-Algorithms/blob/main/Practice%20/JAVA/Linked%20Lists/src/com/linkedlistspractice/datastructures/LinkedList.java)
 
 
 - **Resources:**
