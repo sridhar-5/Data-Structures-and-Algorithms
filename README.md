@@ -1,5 +1,7 @@
 # Data-Structures and Algorithms
 
+- Note: Read this readme in light mode is highly recommended.
+
 Implementation of simple data structures in Python and c++ Mostly. (Java's work is still in progress)
 _______
 
@@ -43,15 +45,20 @@ ___________________
 
 A stack is a collection of nodes with operations occuring at one end only. It behaves like a real-world stack or pile of books - books can only be taken from  or placed on the top of the pile in a First In Last Out (LIFO) operations.
 
+- basic operations of a stack are push,pop,peek or top,isEmpty
+- The basic errors encountered are 'stack overflow' and 'stack empty exception'
+- They occur if we try to insert into the stack which is already full and we try to pop from the stack when it is alredy empty
+- All the basic operations in a stack takes O(1) time complexity. 
+
 ![stack](https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Data_stack.svg/440px-Data_stack.svg.png)
 
 -Stacks are handy for remembering state eg undo and redo
 -Stacks can also be implemented using linked lists. 
 
 - **Modules:** 
-	- **Python Implementation** [stack.py](https://github.com/sridhar-5/Data-Structures-and-Algorithms/blob/main/Practice%20/Python/stack.py)
-	- **Python Implementation using linked lists** [stack_using_linked_lists.py](https://github.com/sridhar-5/Data-Structures-and-Algorithms/blob/main/Practice%20/Python/stack_using_linked_lists.py)
-	- **C++ Implementation** [stacks.cpp](https://github.com/sridhar-5/Data-Structures-and-Algorithms/blob/main/Practice%20/C%2B%2B/stacks.cpp) 
+	- **Python Implementation :** [stack.py](https://github.com/sridhar-5/Data-Structures-and-Algorithms/blob/main/Practice%20/Python/stack.py)
+	- **Python Implementation using linked lists :** [stack_using_linked_lists.py](https://github.com/sridhar-5/Data-Structures-and-Algorithms/blob/main/Practice%20/Python/stack_using_linked_lists.py)
+	- **C++ Implementation :** [stacks.cpp](https://github.com/sridhar-5/Data-Structures-and-Algorithms/blob/main/Practice%20/C%2B%2B/stacks.cpp) 
 
 - **Resources:**
 https://github.com/clair3st/Data-Structures
@@ -73,6 +80,8 @@ _____________
 ## Double Linked List
 
 A doubly linked list is made of nodes which contain a reference (or pointer) to the next node in the list, and the previous node in the list plus data. 
+
+- Exampleof how Doubly Linked List look like:
 
 ![doubly linked list](https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Doubly-linked-list.svg/610px-Doubly-linked-list.svg.png)
 
