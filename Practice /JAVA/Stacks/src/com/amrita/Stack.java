@@ -63,4 +63,16 @@ public class Stack {
         return -1;
     }
 
+    public void PrintStack(){
+        if (isEmpty()){
+            System.out.println("Empty");
+        }
+        else{
+            for(int i = 0;i < size();i++){
+                System.out.print(stack[i] + " ");
+            }
+            System.out.println();
+        }
+    }
+
 }
