@@ -1,11 +1,11 @@
 package com.amrita;
 
-public class Stack {
+public class stack {
     public int Max;
     public int Top;
     public int[] stack;
 
-    public Stack(int Max){
+    public stack(int Max){
         this.Max = Max;
         stack = new int[Max];
         Top = -1;
