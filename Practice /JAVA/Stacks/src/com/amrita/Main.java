@@ -9,6 +9,9 @@ public class Main {
         int[] span = new int[n];
 
         The_Stock_Span_Problem prob = new The_Stock_Span_Problem(1000);
-        prob.alternate_approach(price,n,span);
+       // prob.alternate_approach(price,n,span);
+
+        Balanced_Paranthesis bal = new Balanced_Paranthesis();
+        bal.problem("((()))");
     }
 }
