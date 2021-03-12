@@ -1,6 +1,10 @@
+#@start-editable@
 
 import math
 from collections import deque
+			
+			
+#@end-editable@
 
 class BinaryTree:
     class node:
@@ -15,6 +19,7 @@ class BinaryTree:
         self.sz = 0
         self.root = self.node()
         self.ht = 0
+        
 
     def getChildren(self, curnode):
         children = []
@@ -26,9 +31,9 @@ class BinaryTree:
 
     def isExternal(self, curnode):
         if (curnode.leftchild==None and curnode.rightchild==None):
-        	return (True)
+            return (True)
         else:
-        	return (False)
+            return (False)
 
     def isRoot(self,curnode):
         if (curnode.parent==None):
@@ -37,74 +42,126 @@ class BinaryTree:
             return False   	
 
     def inorderTraverse(self, v):
-        if v != None:
-            self.inorderTraverse(v.leftchild)
-            print(v.element, end=" ")
-            self.inorderTraverse(v.rightchild)
+        #@start-editable@
 
+
+        if v!= None:
+            self.inorderTraverse(v.leftchild)
+            print(v.element,end=",")
+            self.inorderTraverse(v.rightchild)
+			
+			
+	    #@end-editable@
+        
 
     def preorderTraverse(self, v):
-        if v != None: 
-            print(v.element,end=" ")
+        #@start-editable@
+
+        if v != None:
+            print(v.element,end=",")
             self.preorderTraverse(v.leftchild)
             self.preorderTraverse(v.rightchild)
+			
+			
+	    #@end-editable@
+       
 
     def postorderTraverse(self, v):
+        #@start-editable@
+
         if v != None:
             self.postorderTraverse(v.leftchild)
             self.postorderTraverse(v.rightchild)
-            print(v.element,end=" ")
-
+            print(v.element,end=",")
+			
+			
+	    #@end-editable@
+        
 
     def levelorderTraverse(self, v):
-        #we solve or code the level order traversal using a deque 
-        queue = deque()
-        queue.append(v)
-        while len(queue) > 0:
-            pointer = queue.popleft()
-            print(pointer.element," ")
-            if pointer.leftchild is not None:
-                queue.append(pointer.leftchild)
-            if pointer.rightchild is not None:
-                queue.append(pointer.rightchild)
+        #@start-editable@
 
-    #using parents node
+        bqueue = deque()
+        bqueue.append(v)
+        while len(bqueue) > 0:
+            pointer = bqueue.popleft()
+            print(pointer.element,end=",")
+            if pointer.leftchild != None:
+                bqueue.append(pointer.leftchild)
+            if pointer.rightchild != None: 
+                bqueue.append(pointer.rightchild)
+
+			
+			
+	    #@end-editable@
+       
+
     def findDepth(self, v):
+        #@start-editable@
+
         depth = 0
         while v.parent is not None:
-            parent = parent.parent
+            v = v.parent
             depth += 1
         return depth    
-    
+     
+
+	    #@end-editable@
+    	
+
     def findHeight(self, v):
-    	if v is None:
+        #@start-editable@
+
+        if v is None:
             return -1
-        return max(self.findDepth(v.leftchild)+1,self.findDepth(v.rightchild)+1)
+        return max(self.findHeight(v.leftchild)+1,self.findHeight(v.rightchild)+1)
+			
+	    #@end-editable@
+    	
 
     # delete leaves in the tree
     def delLeaves(self, v):
-        return
+        #@start-editable@
+
+
+        return	
+			
+	    #@end-editable@
+        
     # returns true if tree is proper
     def isProper(self, v):
-        if v == None:
+        #@start-editable@
+
+        if v is None:
             return True
         if v.leftchild == None and v.rightchild == None:
             return True
+        
         if v.leftchild != None and v.rightchild != None:
-            return self.isProper(v.leftchild) and self.isProper(v.rightchild)      
-        return False    
+            return self.isProper(v.rightchild) and self.isProper(v.leftchild)
 
-
+        return False
+			
+			
+	    #@end-editable@
+        
     # create a tree that is a mirror image of the original tree and print its levelorder
     def mirror(self, v):
+        #@start-editable@
+
         if v is None:
             return
+
         self.mirror(v.leftchild)
         self.mirror(v.rightchild)
 
         temp = v.leftchild
         v.leftchild = v.rightchild
         v.rightchild = temp
+			
+			
+	    #@end-editable@
+        
 
     def buildTree(self, eltlist):
         nodelist = []
@@ -126,7 +183,6 @@ class BinaryTree:
 
         self.root = nodelist[1]
         self.sz=len(nodelist)
-        #print("final nodelist", len(nodelist))
         return nodelist
 
     # write a function to visualize the tree
@@ -145,6 +201,23 @@ class BinaryTree:
     def size(self):
         return self.sz
 
+    #determine whether there exists a root-to-leaf path whose nodes sum is equal to a specified integer
+    def root2leafsum(self, k):
+        #@start-editable@
+
+        return	
+			
+	    #@end-editable@
+        
+
+    #determine the value of the leaf node in a given binary tree that is the terminal node of a path of least value from the root of the binary tree to any leaf. The value of a path is the sum of values of nodes along that path.
+    def leastleaf(self):
+        #@start-editable@
+
+        return	
+			
+	    #@end-editable@
+        
 
 def main():
     tree = BinaryTree()
@@ -183,11 +256,13 @@ def main():
               tree.delLeaves(tree.root)
               tree.levelorderTraverse(tree.root)
               print()
+         elif (operation[0] == 'RL'):
+              tree.root2leafsum(int(operation[1]))
+              print()
+         elif (operation[0] == 'ML'):
+              tree.leastleaf()
+              print()
          inputs -= 1
 
 if __name__ == '__main__':
     main()
-
-
-
-#hai da
