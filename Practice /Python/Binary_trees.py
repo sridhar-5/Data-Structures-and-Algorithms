@@ -148,17 +148,7 @@ class BinaryTree:
     # create a tree that is a mirror image of the original tree and print its levelorder
     def mirror(self, v):
         #@start-editable@
-
-        if v is None:
-            return
-
-        self.mirror(v.leftchild)
-        self.mirror(v.rightchild)
-
-        temp = v.leftchild
-        v.leftchild = v.rightchild
-        v.rightchild = temp
-			
+	return			
 			
 	    #@end-editable@
         
