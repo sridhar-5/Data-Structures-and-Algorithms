@@ -123,8 +123,16 @@ class BinaryTree:
     def delLeaves(self, v):
         #@start-editable@
 
+        if v is None:
+            return None
+        if v.leftchild is None and v.rightchild is None:
+            return None
 
-        return	
+        v.leftchild = self.delLeaves(v.leftchild)
+        v.rightchild = self.delLeaves(v.rightchild)
+
+        return v
+     
 			
 	    #@end-editable@
         
@@ -148,7 +156,17 @@ class BinaryTree:
     # create a tree that is a mirror image of the original tree and print its levelorder
     def mirror(self, v):
         #@start-editable@
-	return			
+
+        if v is None:
+            return
+
+        self.mirror(v.leftchild)
+        self.mirror(v.rightchild)
+
+        temp = v.leftchild
+        v.leftchild = v.rightchild
+        v.rightchild = temp
+			
 			
 	    #@end-editable@
         
@@ -195,7 +213,16 @@ class BinaryTree:
     def root2leafsum(self, k):
         #@start-editable@
 
-        return	
+        print(self.check_func(self.root,k))
+
+    def check_func(self,node,sum):
+        if node is None:
+            return False
+            
+        if node.element == sum and node.leftchild is None and node.rightchild is None:
+            return True
+
+        return self.check_func(node.leftchild,sum-node.element) or self.check_func(node.rightchild,sum - node.element)        
 			
 	    #@end-editable@
         
@@ -204,7 +231,20 @@ class BinaryTree:
     def leastleaf(self):
         #@start-editable@
 
-        return	
+        bqueue = deque()
+        queue = deque()
+        bqueue.append(self.root)
+        while len(bqueue) > 0:
+            pointer = bqueue.popleft()
+            if pointer.leftchild is None and pointer.rightchild is None:
+                queue.append(pointer.element)
+            if pointer.leftchild != None:
+                bqueue.append(pointer.leftchild)
+            if pointer.rightchild != None: 
+                bqueue.append(pointer.rightchild)
+
+        print(min(queue))     
+        
 			
 	    #@end-editable@
         
