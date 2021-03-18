@@ -149,7 +149,8 @@ Binary Search Trees are a popular data structure choice in computing because of 
 
 
 - **Resources:**
-https://github.com/clair3st/Data-Structures
+   - https://github.com/clair3st/Data-Structures
+   - geeksforgeeks.com
 
 **Tree traversals**
 
