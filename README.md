@@ -131,6 +131,7 @@ Queues are used in computer science exactly like they are in the physical world,
 
 - **Resources:**
 https://github.com/clair3st/Data-Structures
+geeksforgeeks.com
 
 The Queue implementation supports the following methods:
 
