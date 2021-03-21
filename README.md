@@ -22,6 +22,7 @@ The disadvantages of using a linked list is they use more memory than an array. 
 
 - **Resources:**
 https://github.com/clair3st/Data-Structures
+geeksforgeeks.com
 
 The list implementation supports the following methods:
 
