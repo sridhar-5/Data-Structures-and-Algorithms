@@ -20,7 +20,7 @@ The disadvantages of using a linked list is they use more memory than an array. 
 - **Implementation in Java :** [LinkedList.java](https://github.com/sridhar-5/Data-Structures-and-Algorithms/blob/main/Practice%20/JAVA/Linked%20Lists/src/com/linkedlistspractice/datastructures/LinkedList.java)
 
 
-- **Resources:**
+**Resources:**
 https://github.com/clair3st/Data-Structures
 
 The list implementation supports the following methods:
