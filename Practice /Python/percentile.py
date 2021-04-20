@@ -10,9 +10,6 @@ class percentile:
 
     def __init__(self):
         self.root = None
-        num = []
-        g_t = 0
-        l_t = 0
         self.size = 0
 
     def InsertNode(self, key):
@@ -45,29 +42,13 @@ class percentile:
             self.preOrderTraversal(iterate.leftchild)
             self.preOrderTraversal(iterate.rightchild)
 
-    def preOrder(self, iterate):
-        if iterate is not None:
-            self.num.append(iterate.data)
-            self.preOrderTraversal(iterate.leftchild)
-            self.preOrderTraversal(iterate.rightchild)
 
-    def return_greater_lesser(self, value):
-        self.preOrder(self.root)
-
-        g_t = 0
-        l_t = 0
-
-        for x in self.num:
-            if (x > value):
-                g_t += 1
-
-            else:
-                l_t += 1
 
     def getPercentile(self, val):
         current = self.root
         count = 0
         stack = []
+        stack2 = []
         while True:
             if current is not None:
                 stack.append(current)
@@ -75,26 +56,42 @@ class percentile:
 
             elif stack:
                 current = stack.pop()
+                stack2.append(current.data)
                 if current.data <= val:
                     count = count + 1
                 current = current.rightchild
             else:
                 break
-        percent = (count / self.size) * 100
-        print(percent)
-"""
+        if val not in stack2:
+            return        
+        fraction = count/self.size
+        percent = fraction * 100
+        print(round(percent))
+    """
+        def percGreater(self, val):
+            self.return_greater_lesser(val)
+            print(self.g_t)
+    """
+
     def percGreater(self, val):
-        self.return_greater_lesser(val)
-        print(self.g_t)
-"""
+        index  = int((val*self.size)/100)
+        return self.size - index    
+
+    def getHundred(self):
+        k = self.root
+
+        while k.rightchild is not None:
+            k = k.rightchild
+        return k.data    
+
 
 def main():
     object = percentile()
     testcases = int(input())
+
     for i in range(testcases):
         express = input()
         operation = express.split()
-
         if operation[0] == "I":
             object.InsertNode(int(operation[1]))
             object.preOrderTraversal(object.root)
@@ -103,9 +100,11 @@ def main():
             object.getPercentile(int(operation[1]))
 
         elif operation[0] == "G":
-            object.percGreater(int(operation[1]))
-            print()
-
+            k = object.percGreater(int(operation[1]))
+            print(k)
+        elif operation[0] == "H":
+            k = object.getHundred()
+            print(k)    
 
 if __name__ == "__main__":
     main()
