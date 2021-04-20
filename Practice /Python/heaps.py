@@ -8,7 +8,7 @@ class BinHeap():
 
     def upHeapp(self, i):
         # @start-editable@
-
+        print(i)
         while i // 2 > 0:
             if self.heapList[i] < self.heapList[i // 2]:
                 baby_prog = self.heapList[i]

@@ -1,7 +1,6 @@
 import math
 from collections import deque
 
-
 class BinarySearchTree:
     """
         This defines the node class. The children can be individually declared or stored
@@ -133,6 +132,25 @@ class BinarySearchTree:
                 a) its inorder successor node or b)Inorder predecessor node
     """
 
+    def inorderSuccessor(self,pointer):
+        stack = []
+        stack2 = []
+        current = self.root
+
+        while current is not None or len(stack) > 0:
+
+            while current is not None:
+                stack.append(pointer)
+                current = current.left
+
+            current = stack.pop()
+            stack2.append(current)
+            current = current.right
+
+        for i in range(len(stack2)):
+            if pointer is stack2[i]:
+                return stack2[i+1]
+
     def deleteElement(self,e):
 
         pointer_1 = None
@@ -164,16 +182,40 @@ class BinarySearchTree:
         elif pointer_2.leftchild is None or pointer_2.rightchild is None:
 
             if pointer_2.leftchild is not None:
-                pointer_2.element = pointer_2.leftchild.element
-                pointer_2.leftchild = None
+                child_node = pointer_2.leftchild
             else:
-                pointer_2.element = pointer_2.rightchild.element
-                pointer_2.rightchild = None
+                child_node = pointer_2.rightchild
 
+            if pointer_2 is not None:
+                if pointer_2 is pointer_1.leftchild:
+                    pointer_1.leftchild = child_node
+                else:
+                    pointer_1.rightchild = child_node
+            else:
+                self.root = child_node
 
+        #if a pointer has two children
+        else:
+            inorder_successor = self.inorderSuccessor(pointer_2)
+            iterate = self.root
+            iterate_2 = None
 
+            while iterate != None:
 
+                if iterate.element == inorder_successor.element:
+                    if iterate_2.leftchild is iterate:
+                        iterate_2.leftchild = None
+                    else:
+                        iterate_2.rightchild = None
 
+                iterate_2 = iterate
+
+                if iterate.element < inorder_successor.element:
+                    iterate = iterate.rightchild
+                else:
+                    iterate = iterate.leftchild
+
+            pointer_2.element = inorder_successor.element
 
     def createTree(self, items):
         self.sz = len(items)
