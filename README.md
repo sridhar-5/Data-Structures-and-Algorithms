@@ -2,7 +2,7 @@
 
 - Note: Read this readme in light mode is highly recommended.
 
-Implementation of simple data structures in Python and c++ Mostly. (Java's work is still in progress)
+Implementation of simple data structures in Python and c++ Mostly and Java
 _______
 
 ## Linked List
