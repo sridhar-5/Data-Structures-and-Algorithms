@@ -1,0 +1,19 @@
+
+1 -> 2 -> 3 - > 4 - > 5 - > 6
+
+convert_dll_to_bst(head,size_of_ll):
+    count = 0;
+    if current == NULL:
+        return;
+
+    current = head;
+    while(current != NULL && count <= ceil(size_of_ll/2) ):
+        count++
+        current = current.next
+
+    current.prev = convert_dll_to_bst(head,size_of_ll/2);
+    current.next = convert_dll_to_bst(current.next,size_of_ll/2);
+
+    return current
+
+

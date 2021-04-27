@@ -1,0 +1,42 @@
+
+
+DESCRIPTION : Every btree is a bst if the inorder traversal comes out to be sorted.
+             so performing the iterative inorder traversal and storing the elements into the a list and returning and 
+             keep a copy of the list in an other variable and sort the list. check whether the sorted list and the list in the copy variable are same
+             if same we can return true.
+
+
+IterativeInorder(self,root):
+    current = root
+
+    stack = []
+    stack2 = []
+
+    while True:
+        if current is not None:
+            stack.append(current)
+            current = current.leftchild
+
+        elif stack:
+            current = stack.pop()
+            stack2.append(current.element)
+
+            current = current.rightchild
+        else:
+            break
+    return stack2
+
+
+check_if_btree_is_bst(root):
+
+    list = Iterative_Inorder(root)
+
+    //if the inorder is sorted then it must be a bst
+
+    tree_list = list
+    list.sort()
+
+    if (tree_list == list):
+        return True
+        
+

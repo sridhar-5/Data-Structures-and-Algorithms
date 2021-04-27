@@ -1,0 +1,19 @@
+
+
+since the inorder traversal for bst is sorted so doing the inorder traversal and storing the elements in the list and returning the element in k-1 element.
+
+global_variable = []
+
+inorder_traversal(root):
+    if root != NULL;
+        inorder_traversal(root.left)
+        global_variable.append(root.element)
+        inorder_traversal(root.right)
+
+kth_smallest_node_in_bst(root):
+    inorder_traversal(root)
+
+    //since in bst inorder traversal is sorted kth smallest element is k-1 element in the list in the 
+    return global_variable[k-1]
+
+    
