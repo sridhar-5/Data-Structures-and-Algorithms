@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/Data-Structures-and-Algorithms.iml" filepath="$PROJECT_DIR$/.idea/Data-Structures-and-Algorithms.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Practice/JAVA/Linked Lists/Linked Lists.iml" filepath="$PROJECT_DIR$/Practice/JAVA/Linked Lists/Linked Lists.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Practice/Practice.iml" filepath="$PROJECT_DIR$/Practice/Practice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Practice/JAVA/Stacks/Stacks.iml" filepath="$PROJECT_DIR$/Practice/JAVA/Stacks/Stacks.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Practice/JAVA/sorting and searching/sorting and searching.iml" filepath="$PROJECT_DIR$/Practice/JAVA/sorting and searching/sorting and searching.iml" />
+    </modules>
+  </component>
+</project>
