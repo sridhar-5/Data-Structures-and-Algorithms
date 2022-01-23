@@ -43,7 +43,7 @@ ___________________
 
 ## Stack
 
-A stack is a collection of nodes with operations occuring at one end only. It behaves like a real-world stack or pile of books - books can only be taken from  or placed on the top of the pile in a First In Last Out (LIFO) operations.
+A stack is a collection of nodes with operations occuring at one end only. It behaves like a real-world stack or pile of books - books can only be taken from  or placed on the top of the pile in a First In Last Out (LIFO) operations
 
 - basic operations of a stack are push,pop,peek or top,isEmpty
 - The basic errors encountered are 'stack overflow' and 'stack empty exception'
