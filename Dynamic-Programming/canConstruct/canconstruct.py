@@ -12,9 +12,6 @@ def canconstruct(thisstring, strarray) -> bool:
                 return True
     return False
 
-        
-
-
 
 
 print(canconstruct("skateboard", ["bo", "rd", "ate", "t", "ska", "sk", "boar"]))
